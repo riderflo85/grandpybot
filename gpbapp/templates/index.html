@@ -6,12 +6,24 @@
         <title>GrandPyBot</title>
     </head>
     <body>
-        <div id="div-header">
-            <header>
-                <img id="img-header" src="{{ url_for('static', filename='img/img_home.JPG') }}" alt="logo de l'appli">
-                <p>Phrase d'accroche</p>
-            </header>
+
+        <header>
+            <div id="div-header">
+                <img id="img-header" src="{{ url_for('static', filename='img/img_home.png') }}" alt="logo de l'appli">
+                <h1>GrandPyBot, le papy Tchatcheur &#128526</h1>
+            </div>
+        </header>
+
+        <div id="div-content">
+            <p>Contenu, zone de texte...</p>
         </div>
+
+        <footer>
+            <div id="div-footer">
+                <p id="text-footer">Mon github</p>
+            </div>
+        </footer>
+
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
 </html>
