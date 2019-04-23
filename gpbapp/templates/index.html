@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/forme.css') }}">
-    <title>GrandPyBot</title>
-</head>
-<body>
-    <div id="div-header">
-        <header>
-            <p><img id="img-header" src="{{ url_for('static', filename='img/img_home.JPG') }}" alt="logo de l'appli"> Phrase d'accroche</p>
-        </header>
-    </div>
-</body>
-<!-- background-color: rgb(48, 48, 54); -->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/forme.css') }}">
+        <title>GrandPyBot</title>
+    </head>
+    <body>
+        <div id="div-header">
+            <header>
+                <img id="img-header" src="{{ url_for('static', filename='img/img_home.JPG') }}" alt="logo de l'appli">
+                <p>Phrase d'accroche</p>
+            </header>
+        </div>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </body>
+</html>

@@ -1,8 +1,12 @@
 #div-header
 {
-    background-color: red;
+    background-color: rgb(48, 48, 54);
+    width: auto;
+    height: 100px;
 }
 p
 {
-    color: green;
+    color: yellowgreen;
+    text-align: center;
+    padding: 1em 0;
 }
