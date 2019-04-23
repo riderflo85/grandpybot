@@ -1,3 +1,6 @@
+#! /usr/bin/env python
+# coding: utf-8
+
 from gpbapp.views import index
 
 def test_la_fonction_index_de_views():
