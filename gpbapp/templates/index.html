@@ -9,50 +9,89 @@
     </head>
 
     <body>
-        <header class="container-fluid pb-3 bg-dark fixed-top" id="topHeader">
+        <header class="container-fluid bg-dark fixed-top" id="topHeader">
             <div class="row">
                 <div class="col-12 col-md-12 px-0 d-flex justify-content-center justify-content-md-between">
                     <img src="{{ url_for('static', filename='img/img_home.png') }}" alt="logo de l'appli"  class="img-fluid d-none d-md-block">
                     <h1 class="pt-4 text-warning">GrandPyBot</h1>
-                    <!-- <p class="pt-4 text-warning">Le papy tchatcheur qui sait se servir d'internet</p> -->
                     <img src="{{ url_for('static', filename='img/papyHello.png') }}" alt="papy hello" class="img-fluid d-none d-md-block">
                 </div><!-- end .col-12 col-md-12 pl-0 d-flex... -->
             </div><!-- end .row -->
         </header><!-- end .container-fluid -->
 
-        <main class="container-fluid pt-5">
+        <main class="container-fluid pt-3">
             <div class="row">
-                <div class="col-12 col-md-9">
-                    <div class="card mx-auto" id="cardConversation">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Conversation</h4>
-                            <img src="{{ url_for('static', filename='img/img_msg.png') }}" alt="papy hello" class="img-fluid">
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                            <p class="text-primary border border-primary px-2">Voici ton adresse mon petit</p>
-                        </div>
-                    </div><!-- end .card -->
-                </div><!-- end .col-12 -->
+                <div class="col-12 col-md-4">
+                    <div class="container-fluid bg-light rounded-pill" id="div-intro">
+                        <div class="row">
+                            <div class="col-8 pl-4">
+                                <p class="lead my-5 text-primary text-center">GrandPy, le papy tchattcheur qui sait se servir d'internet.</p>
+                            </div>
+                            <div class="col-4 pr-4">
+                                <img src="{{ url_for('static', filename='img/papy_internet_200x200.png') }}" alt="papy hello" class="img-fluid">
+                            </div><!-- end .col-8 pl-4 -->
+                        </div><!-- end .row -->
+                    </div><!-- end .container-fluid bg-light -->
+                </div><!-- end .col-12 col-md-4 -->
+                <div class="col-12 col-md-4 offset-md-4">
+                    <div class="container-fluid bg-light rounded-pill" id="div-intro">
+                        <div class="row">
+                            <div class="col-8 pl-4">
+                                <p class="lead my-5 text-primary text-center">Tu cherche une rue, une avenue, un lieu? Demande à GrandPy, il connait déjà l'adresse.</p>
+                            </div>
+                            <div class="col-4 pr-4 pt-2">
+                                <img src="{{ url_for('static', filename='img/papy_sous_proj_200x200.png') }}" alt="papy hello" class="img-fluid">
+                            </div><!-- end .col-8 pl-4 -->
+                        </div><!-- end .row -->
+                    </div><!-- end .container-fluid bg-light... -->
+                </div><!-- end .col-12 col-md-4 -->
             </div><!-- end .row -->
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <!-- <div class="mx-auto">
+                        <h3 class="text-center" id="title-conv">Conversation</h3>
+                    </div> -->
+                    <div class="card mx-auto" id="cardConversation">
+                        <h3 class="text-center sticky-top py-2" id="title-conv">Conversation</h3>
+                        <div class="card-body pl-3 pr-1">
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ullam eligendi nisi nesciunt, nobis dolores!</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus rem, praesentium unde reprehenderit et neque, alias facilis iusto iure quas incidunt perferendis, error tempore! Veritatis consectetur assumenda corrupti maiores repellendus quam odit qui doloremque numquam. Consequatur aspernatur eius similique sapiente!</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia soluta fugiat ipsam molestiae minus repellat officiis quod aperiam delectus cumque, perferendis, enim eos dolore! Optio dolorum accusantium officiis incidunt?</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, rerum. Facere nostrum dolorum quibusdam nihil commodi? A aperiam, iste magnam porro atque facilis commodi quam nulla animi? Itaque, enim quae!Ea, quod? Dolores recusandae possimus, veritatis ducimus veniam commodi, necessitatibus, facilis atque neque mollitia inventore non earum praesentium? Aperiam nisi autem consequatur. Est saepe explicabo corrupti quas! Magni, deserunt modi.</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
+                            <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
+                            <img src="{{ url_for('static', filename='img/img_msg.png') }}" alt="papy hello" class="img-fluid">
+                            <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Voici ton adresse mon petit</p>
+                        </div><!-- end .card-body -->
+                    </div><!-- end .card -->
+
+                    <div class="form-group mx-auto my-3" id="div-champsDeSaisie">
+                        <input type="text" class="form-control" id="champsDeSaisie" placeholder="Écrivez...">
+                    </div><!-- end .form-group... -->
+                </div><!-- end .col-12 mt-5-->
+            </div><!-- end .row-->
         </main><!-- end .container bg-light -->
 
-
-
-
-        <footer class="bg-dark fixed-bottom text-center pt-3">
+        <footer class="bg-dark fixed-bottom text-center mt-3">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-around">
-                        <ul class="nav">
+                        <img src="{{ url_for('static', filename='img/papy_repos_pipe_80x80.png') }}" alt="papy hello" class="img-fluid">
+                        <ul class="nav align-self-center">
                             <li class="nav-item">
                                 <a href="http://facebook.com" class="nav-link text-warning"><span class="fab fa-facebook-square"></span></a>
                             </li><!-- end .nav-item-->
@@ -66,6 +105,7 @@
                                 <a href="https://www.linkedin.com/in/florent-grenaille-a19b89177/" class="nav-link text-warning"><span class="fab fa-linkedin"></span></a>
                             </li><!-- end .nav-item-->
                         </ul><!-- end .nav-->
+                        <img src="{{ url_for('static', filename='img/papy_me_80x80.png') }}" alt="papy hello" class="img-fluid">
                     </div><!-- end .col-12 d-flex-->
                 </div><!-- end .row -->
             </div><!-- end .container-fluid -->
@@ -76,36 +116,4 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
     </body>
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <body>
-
-        <header>
-            <div id="div-header">
-                <img id="img-header" src="{{ url_for('static', filename='img/img_home.png') }}" alt="logo de l'appli">
-                <h1>GrandPyBot, le papy Tchatcheur &#128526</h1>
-            </div>
-        </header>
-
-        <div id="div-content">
-            <p>Contenu, zone de texte...</p>
-        </div>
-
-        <footer>
-            <div id="div-footer">
-                <p id="text-footer">Mon github</p>
-            </div>
-        </footer>
-
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    </body> -->
 </html>
