@@ -1,4 +1,28 @@
+#topHeader
+{
+    height: 100px;
+}
+
 body
+{
+    padding-top: 100px;
+    padding-bottom: 70px; 
+    background-color: rgb(0, 196, 161);
+}
+
+footer
+{
+    height: 4.5rem;
+}
+
+#cardConversation
+{
+    width: 60%;
+    height: 100%;
+}
+
+
+/* body
 {
     background-color: rgb(0, 196, 161);
 }
@@ -46,4 +70,4 @@ h1
 {
     color: yellowgreen;
     margin: auto;
-}
+} */
