@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 # coding: utf-8
 
+import googlemaps
+import wikipediaapi
 from flask import Flask, render_template
 
 from . import constant as const
@@ -12,6 +14,36 @@ app = Flask(__name__)
 def index():
     print(type(render_template('index.html')))
     return render_template('index.html')
+
+
+class LocationSearch():
+
+    def __init__(self, api):
+        self.maps_service = googlemaps.Client(key=api)
+    
+    def place_prediction(self, place):
+        result = self.maps_service.places_autocomplete_query(
+            place
+        )
+        match = {
+            "description" : result[0]['description']
+        }
+        return match
+
+    def places_search(self, place):
+        result = self.maps_service.places(place)
+        infos_util = {
+            "formatted_address": result['results'][0]['formatted_address'],
+            "name": result['results'][0]['name'],
+            "location": {
+                "lat": result['results'][0]['geometry']['location']['lat'],
+                "lng": result['results'][0]['geometry']['location']['lng']
+            },
+        }
+        return infos_util
+
+
+
 
 def parser(phrase_a_parser):
     """
@@ -64,7 +96,23 @@ def parser(phrase_a_parser):
 
     return complete_phrase
 
+
+
+def infos_wikipedia(place):
+    wiki_service = wikipediaapi.Wikipedia('fr')
+    result_search = wiki_service.page(place)
+
+    if result_search.exists():
+        desc = result_search.summary
+
+        if "\n" in desc:
+            desc = desc.replace("\n", " ")
+            result_infos = {"link": result_search.fullurl, "description": desc}
+            return result_infos
     
+    else:
+        return "La page n'existe pas"
+
 
 if __name__ == "__main__":
     app.run()

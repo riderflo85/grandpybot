@@ -8,6 +8,8 @@ pytest = "*"
 
 [packages]
 flask = "*"
+googlemaps = "*"
+wikipedia-api = "*"
 
 [requires]
 python_version = "3.7"
