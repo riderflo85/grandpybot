@@ -1,10 +1,10 @@
 #! /usr/bin/env python
 # coding: utf-8
 
-import re, string
+import re, string, json
 import googlemaps
 import wikipediaapi
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from . import constant as const
 
@@ -14,6 +14,23 @@ app = Flask(__name__)
 @app.route('/index/')
 def index():
     return render_template('index.html')
+
+@app.route('/search', methods=['GET'])
+def search():
+    phrase = request.args.get('phrase')
+
+    data = Parser()
+    geolocation = LocationSearch(const.API_KEY)
+
+    data_user = data.split_word(phrase)
+    phrase_parser = data.util_word(data_user)
+    complete_string = " ".join(phrase_parser)
+    prediction = geolocation.place_prediction(complete_string)
+
+    return json.dumps({
+        'status': 'OK',
+        'result': geolocation.places_search(prediction['description'])
+        })
 
 
 class LocationSearch():
@@ -48,7 +65,7 @@ class Parser():
 
     def split_word(self, phrase_a_parser):
         """
-        Fonction qui découpe une chaine de caractère en une liste de mots
+        Méthode qui découpe une chaine de caractère en une liste de mots
         et sans ponctuation
         """
         result = re.split(r'(\W+)', phrase_a_parser.lower())
@@ -80,6 +97,9 @@ class Parser():
 
 
 def infos_wikipedia(place):
+    """
+    Fonction qui recherche et affiche la description d'une page wikipedia
+    """
     wiki_service = wikipediaapi.Wikipedia('fr')
     result_search = wiki_service.page(place)
 

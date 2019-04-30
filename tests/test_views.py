@@ -84,6 +84,10 @@ def test_de_la_methode_de_classe_place_prediction(monkeypatch):
 
 
 def test_de_la_fonction_infos_wikipedia(monkeypatch):
+    """
+    La fonction infos_wikipedia renvoi une courte description d'une
+    page wikipedia
+    """
 
     class mockclass():
 
