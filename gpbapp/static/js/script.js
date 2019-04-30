@@ -1,2 +1,8 @@
-console.log("Test 230128");
-console.log("Test 2");
+$(document).ready(function () {
+    $('#champsDeSaisie').on('blur', function (e) {
+        elt = e;
+        elt.on('keypress', function() {
+            inputUser = elt.value;
+        });
+    });
+});

@@ -65,10 +65,10 @@ def test_de_la_methode_de_classe_place_prediction(monkeypatch):
         "description": "Openclassrooms, Cité Paradis, Paris, France"
     }
 
-    def mock_place_predicition(googlempas):
+    def mock_place_predicition(googlemaps):
         return result
     
-    monkeypatch.setattr(googlemaps, 'places_autocomplete_query', mock_place_predicition)
+    monkeypatch.setattr(googlemaps.places, 'places_autocomplete_query', mock_place_predicition)
     search = LocationSearch(API_KEY)
     find_openclassrooms = search.place_prediction("openclassrooms")
 
@@ -77,15 +77,23 @@ def test_de_la_methode_de_classe_place_prediction(monkeypatch):
 
 
 def test_de_la_fonction_infos_wikipedia(monkeypatch):
-    result_wiki = {
-        "link": "https://fr.wikipedia.org/wiki/Sallertaine", "description": "Sallertaine est une commune française située dans le département de la Vendée en région Pays de la Loire. Ses habitants sont appelés les Sallertainois."
-        }
 
-    def mock_wikipedia(wikipediaapi):
-        return result_wiki
+    class mockclass():
+
+        summary = "Sallertaine est une commune française située dans le département de la Vendée en région Pays de la Loire.\nSes habitants sont appelés les Sallertainois."
+        fullurl = "https://fr.wikipedia.org/wiki/Sallertaine"
+        
+
+        def exists(self):
+            return True
+        
+
+    def mock_wikipedia(param, place):
+
+        return mockclass()
     
-    monkeypatch.setattr(wikipediaapi, 'page', mock_wikipedia)
+    monkeypatch.setattr(wikipediaapi.Wikipedia, 'page', mock_wikipedia)
 
     search_wiki = infos_wikipedia("sallertaine")
 
-    assert search_wiki == result_wiki
+    assert search_wiki == {"link": mockclass.fullurl, "description": "Sallertaine est une commune française située dans le département de la Vendée en région Pays de la Loire. Ses habitants sont appelés les Sallertainois."}
