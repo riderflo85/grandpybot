@@ -3,7 +3,7 @@
 import googlemaps
 import wikipediaapi
 
-from gpbapp.views import index, LocationSearch, infos_wikipedia, parser
+from gpbapp.views import index, LocationSearch, Parser, infos_wikipedia
 from gpbapp.constant import API_KEY
 
 # def test_la_fonction_index_de_views():
@@ -17,15 +17,22 @@ from gpbapp.constant import API_KEY
     
 #     assert index() == str
 
-def test_la_fonction_parser():
+def test_la_methode_split_word_de_la_classe_parser():
     """
-    La fonction parser retourne une liste de mots sans ponctuation
+    La methode split_word retourne une liste de mots sans ponctuation
     """
     phrase_a_parser = "Bonjour grandpy, peut tu me trouver l'adresse d'openclassrooms? merci mon pote, je t'aime bien l'ami"
+    test = Parser()
+    assert test.split_word(phrase_a_parser) == ["bonjour", "grandpy", "peut", "tu", "me", "trouver", "l", "adresse", "d", "openclassrooms", "merci", "mon", "pote", "je", "t", "aime", "bien", "l", "ami"]
 
-    assert parser(phrase_a_parser) == ["Bonjour", "grandpy", "peut", "tu", "me", "trouver", "l", "adresse", "d", "openclassrooms", "merci", "mon", "pote", "je", "t", "aime", "bien", "l", "ami"]
 
-
+def test_la_methode_util_word_de_la_classe_parser():
+    """
+    La methode util_word retourne une liste de mots util pour les adresses
+    """
+    list_word = ["bonjour", "grandpy", "peut", "tu", "me", "trouver", "l", "adresse", "d", "openclassrooms", "merci", "mon", "pote", "je", "t", "aime", "bien", "l", "ami"]
+    test = Parser()
+    assert test.util_word(list_word) == ['openclassrooms'] 
 
 
 def test_de_la_methode_de_classe_place_search(monkeypatch):

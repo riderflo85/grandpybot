@@ -5,11 +5,13 @@ verify_ssl = true
 
 [dev-packages]
 pytest = "*"
+pipfile = "*"
 
 [packages]
 flask = "*"
 googlemaps = "*"
 wikipedia-api = "*"
+pipfile = "*"
 
 [requires]
 python_version = "3.7"

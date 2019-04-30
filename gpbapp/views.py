@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # coding: utf-8
 
+import re, string
 import googlemaps
 import wikipediaapi
 from flask import Flask, render_template
@@ -12,7 +13,6 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index/')
 def index():
-    print(type(render_template('index.html')))
     return render_template('index.html')
 
 
@@ -44,58 +44,39 @@ class LocationSearch():
 
 
 
+class Parser():
 
-def parser(phrase_a_parser):
-    """
-    Fonction qui découpe une chaine de caractère en une liste de mots
-    et sans ponctuation
-    """
-    result = phrase_a_parser.split()
-    phrase_temp = []
-    complete_phrase = []
+    def split_word(self, phrase_a_parser):
+        """
+        Fonction qui découpe une chaine de caractère en une liste de mots
+        et sans ponctuation
+        """
+        result = re.split(r'(\W+)', phrase_a_parser.lower())
 
-    nb = len(const.SIGN_LIST)
+        for punctuation in string.punctuation:
+            for word in result:
+                if punctuation in word:
+                    result.remove(word)
 
-    loop = nb - nb
-    for s in const.SIGN_LIST:
-        sign = s
-        
-        if loop == 0:
-            for i in result:
-                if sign in i:
-                    second_parse = i.split(sign)
-                    for w in second_parse:
-                        complete_phrase.append(w)
+        for word in result:
+            if word == " ":
+                result.remove(word)
+
+        return result
+    
+    def util_word(self, list_word):
+        """
+        Méthode qui retire tout les mots inutile pour garder qu'une adresse
+        """
+        result = list_word
+        for element in const.STOP_WORD:
+            for word in result:
+                if word == element:
+                    result.remove(word)
                 else:
-                    complete_phrase.append(i)
-            phrase_temp = complete_phrase
-            loop += 1
+                    pass
 
-        else:
-            for i in complete_phrase:
-                if sign in i:
-                    second_parse = i.split(sign)
-                    for w in second_parse:
-                        phrase_temp.append(w)
-                else:
-                    phrase_temp.append(i)
-        
-        if loop < nb:
-            complete_phrase = []
-            complete_phrase = phrase_temp
-            phrase_temp = []
-            loop += 1
-        
-        else:
-            complete_phrase = phrase_temp
-            phrase_temp = []
-
-    for e in complete_phrase[:]:
-        if e == "":
-            complete_phrase.remove(e)
-
-    return complete_phrase
-
+        return result
 
 
 def infos_wikipedia(place):
