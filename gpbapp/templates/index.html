@@ -24,24 +24,24 @@
                 <div class="col-12 col-md-4">
                     <div class="container-fluid bg-light rounded-pill" id="div-intro">
                         <div class="row">
-                            <div class="col-8 pl-4">
+                            <div class="col-12 col-md-8 pl-md-4">
                                 <p class="lead my-5 text-primary text-center">GrandPy, le papy tchattcheur qui sait se servir d'internet.</p>
-                            </div>
-                            <div class="col-4 pr-4">
+                            </div><!-- end .col-12 col-md-8 pl-md-4 -->
+                            <div class="col-md-4 pr-md-4 d-none d-md-block">
                                 <img src="{{ url_for('static', filename='img/papy_internet_200x200.png') }}" alt="papy hello" class="img-fluid">
-                            </div><!-- end .col-8 pl-4 -->
+                            </div><!-- end .col-md-4 pr-md-4 d-none d-md-block-->
                         </div><!-- end .row -->
                     </div><!-- end .container-fluid bg-light -->
                 </div><!-- end .col-12 col-md-4 -->
                 <div class="col-12 col-md-4 offset-md-4">
                     <div class="container-fluid bg-light rounded-pill" id="div-intro">
                         <div class="row">
-                            <div class="col-8 pl-4">
+                            <div class="col-12 col-md-8 pl-md-4">
                                 <p class="lead my-5 text-primary text-center">Tu cherche une rue, une avenue, un lieu? Demande à GrandPy, il connait déjà l'adresse.</p>
-                            </div>
-                            <div class="col-4 pr-4 pt-2">
+                            </div><!-- end .col-12 col-md-8 pl-md-4 -->
+                            <div class="col-md-4 pr-md-4 pt-md-2 d-none d-md-block">
                                 <img src="{{ url_for('static', filename='img/papy_sous_proj_200x200.png') }}" alt="papy hello" class="img-fluid">
-                            </div><!-- end .col-8 pl-4 -->
+                            </div><!-- end .col-md-4 pr-md-4 d-none d-md-block-->
                         </div><!-- end .row -->
                     </div><!-- end .container-fluid bg-light... -->
                 </div><!-- end .col-12 col-md-4 -->
@@ -53,7 +53,7 @@
                     </div> -->
                     <div class="card mx-auto" id="cardConversation">
                         <h3 class="text-center sticky-top py-2" id="title-conv">Conversation</h3>
-                        <div class="card-body pl-3 pr-1">
+                        <div class="card-body pl-1 pl-md-2 pr-1" id="cardBody">
                             <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
                             <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
                             <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
@@ -74,7 +74,7 @@
                             <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
                             <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
                             <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
-                            <img src="{{ url_for('static', filename='img/img_msg.png') }}" alt="papy hello" class="img-fluid">
+                            <img src="{{ url_for('static', filename='img/img_msg.png') }}" alt="papy message" class="img-fluid">
                             <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Voici ton adresse mon petit</p>
                         </div><!-- end .card-body -->
                     </div><!-- end .card -->
