@@ -1,4 +1,15 @@
 
+function initMap() {
+    var uluru = {lat: -25.344, lng: 131.036};
+    var map = new google.maps.Map(
+        document.getElementById('mapTest'),
+        {
+            zoom: 9,
+            center: uluru
+        });
+    var marker = new google.maps.Marker({position: uluru, map: map});
+}
+
 $(document).ready(function () {
 
     // var cond = 0;
@@ -11,6 +22,8 @@ $(document).ready(function () {
     //         cond++;
     //     }
     // }
+
+
 
     console.log('Page prete')
     var data = $('#champsDeSaisie');

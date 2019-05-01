@@ -41,6 +41,12 @@ body
     margin-left: 52%;
 }
 
+#mapTest
+{
+    width: 50%;
+    height: 10vh;
+}
+
 #div-champsDeSaisie
 {
     width: 60%;
