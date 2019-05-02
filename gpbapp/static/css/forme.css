@@ -15,6 +15,11 @@ body
     border: 2px solid rgb(255, 31, 0);
 }
 
+.desc-main
+{
+    text-shadow: -3px -5px 3px rgba(0, 0, 0, 0.50);   
+}
+
 #title-conv
 {
     background-color: rgb(230, 230, 230);
@@ -41,10 +46,10 @@ body
     margin-left: 52%;
 }
 
-#mapTest
+.mapTest
 {
-    width: 50%;
-    height: 10vh;
+    width: 48%;
+    height: 11vh;
 }
 
 #div-champsDeSaisie

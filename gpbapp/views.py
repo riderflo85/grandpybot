@@ -26,10 +26,17 @@ def search():
     phrase_parser = data.util_word(data_user)
     complete_string = " ".join(phrase_parser)
     prediction = geolocation.place_prediction(complete_string)
+    if prediction == "Aucunne correspondance de trouver":
+        details = "Lieu non trouver"
+        history = "La page n'existe pas"
+    else:
+        details = geolocation.places_search(prediction['description'])
+        history = infos_wikipedia(complete_string)
 
     return json.dumps({
         'status': 'OK',
-        'result': geolocation.places_search(prediction['description'])
+        'result': details,
+        'history': history
         })
 
 
@@ -42,9 +49,12 @@ class LocationSearch():
         result = self.maps_service.places_autocomplete_query(
             place
         )
-        match = {
-            "description" : result[0]['description']
-        }
+        if result != []:
+            match = {
+                "description" : result[0]['description']
+            }
+        else:
+            match = "Aucunne correspondance de trouver"
         return match
 
     def places_search(self, place):
