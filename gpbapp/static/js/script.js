@@ -38,7 +38,7 @@ function firstMsgBot(text, maps=false, coord=null) {
     }
 }
 
-function secondMsgBot(text) {
+function secondMsgBot(text, timerAnim) {
     var imgBotMsg = "<img src='/static/img/img_msg.png' alt='papy message' class='img-fluid'>";
     var addBaliseBot = "<p class='d-none'>"+text+'</p>';
 
@@ -46,22 +46,24 @@ function secondMsgBot(text) {
     $(imgBotMsg).appendTo('#cardBody');
     $(addBaliseBot).appendTo('#cardBody');
     initStyleMsg();
+    clearTimeout(timerAnim);
+    imgAnim.addClass('d-none');
 }
 
+function rotate() {
+    imgAnim.removeClass('d-none');
+    imgAnim.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});  
+    imgAnim.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});                      
+    timer = setTimeout(function() {
+        ++degree; rotate();
+    },1);
+}
+var imgAnim = $("#round");
+var degree = 0;
 var num = 0;
+var timer;
 
 $(document).ready(function () {
-    
-    // var cond = 0;
-    // function ClignotementImg() {
-    //     if (cond <= 5) {
-    //         $('#cardBody img').fadeOut(900).delay(300).fadeIn(800);
-    //         cond++; 
-    //     }else if (cond === 5) {
-    //         clearInterval(intervalId);
-    //         cond++;
-    //     }
-    // }
 
     var data = $('#champsDeSaisie');
     var emojiTired = "<i class='far fa-tired'></i>";
@@ -72,12 +74,15 @@ $(document).ready(function () {
     var textBot2;
 
     scrollElem.scrollTop = scrollElem.scrollHeight;
+    // var imgAnim = $("#round");
+    // var timer;
 
     data.keypress(function (event){
         if (event.key === "Enter") {
 
             var textUser = data.val();
             if (textUser !== "") {
+                rotate();
                 var addBaliseUser = "<p class='d-none'>"+textUser+'</p>';
 
                 data.val("");
@@ -90,55 +95,58 @@ $(document).ready(function () {
                 scrollElem.scrollTop = scrollElem.scrollHeight;
                 // var intervalId = setInterval(ClignotementImg, 2000);
 
-                $.ajax({
-                    url: '/search',
-                    type: 'GET',
-                    data: 'phrase=' + textUser,
-                    success: function (response) {
-
-                        /* Response Ajax */
-                        var reponseAjax = JSON.parse(response);
-                        var informations;
-                        var check;
-                        var history = reponseAjax.history;
-                        console.log(history);
-                        /* end response Ajax */
-
-                        if (reponseAjax.result === "Lieu non trouver") {
-                            informations = {'formatted_address': 'Aucune adresse ne correspond', 'name': 'ta demande'};
-                            check = false;
-                        }else {
-                            informations = reponseAjax.result;
-                            var coordinate = informations.location;
-                            check = true;
-                        }
-
-                        if (history === "La page n'existe pas") {
-                            if (check) {
-                                textBot1 = "Voici l'adresse que tu ma demander gamins<br>"+informations.formatted_address+"<br>"+emojiGrinWink;
-                                firstMsgBot(textBot1, maps=true, coord=coordinate);
-                                textBot2 = "Je suis désoler, j'ai pas réussi à trouver d'histoire sur "+informations.name+".<br>Soit il est trop vieux et mes aventures ne mi conduisent pas, ou soit il est trop récent pour moi "+emojiTired;
-                                secondMsgBot(textBot2);
-                            }else{
-                                textBot1 = "Tu m'excuseras mais GrandPy n'a pas réussi à trouver d'adresse pour "+informations.name+". "+emojiTired;
-                                firstMsgBot(textBot1);
-                                textBot2 = "Je suis désoler, j'ai pas réussi à trouver d'histoire sur "+informations.name+".<br>Soit il est trop vieux et mes aventures ne mi conduisent pas, ou soit il est trop récent pour moi "+emojiTired;
-                                secondMsgBot(textBot2);
-
+                setTimeout(function () {
+                    $.ajax({
+                        url: '/search',
+                        type: 'GET',
+                        data: 'phrase=' + textUser,
+                        success: function (response) {
+    
+                            /* Response Ajax */
+                            var reponseAjax = JSON.parse(response);
+                            var informations;
+                            var check;
+                            var history = reponseAjax.history;
+                            console.log(history);
+                            /* end response Ajax */
+    
+                            if (reponseAjax.result === "Lieu non trouver") {
+                                informations = {'formatted_address': 'Aucune adresse ne correspond', 'name': 'ta demande'};
+                                check = false;
+                            }else {
+                                informations = reponseAjax.result;
+                                var coordinate = informations.location;
+                                check = true;
                             }
-                        }else {
-                            textBot1 = "Voici l'adresse que tu ma demander gamins<br>"+informations.formatted_address+emojiGrinWink;
-                            firstMsgBot(textBot1, maps=true, coord=coordinate);
-                            textBot2 = "Mon petit voici l'histoire de "+informations.name+".<br>"+history.description+"<br>Si tu veut en savoir plus sur ce lieu, vas voir ici <a href=\""+history.link+"\" class='badge badge-info'>wikipedia</a>";
-                            secondMsgBot(textBot2);
+    
+                            if (history === "La page n'existe pas") {
+                                if (check) {
+                                    textBot1 = "Voici l'adresse que tu ma demander gamins<br>"+informations.formatted_address+"<br>"+emojiGrinWink;
+                                    firstMsgBot(textBot1, maps=true, coord=coordinate);
+                                    textBot2 = "Je suis désoler, j'ai pas réussi à trouver d'histoire sur "+informations.name+".<br>Soit il est trop vieux et mes aventures ne mi conduisent pas, ou soit il est trop récent pour moi "+emojiTired;
+                                    secondMsgBot(textBot2, timer);
+                                }else{
+                                    textBot1 = "Tu m'excuseras mais GrandPy n'a pas réussi à trouver d'adresse pour "+informations.name+". "+emojiTired;
+                                    firstMsgBot(textBot1);
+                                    textBot2 = "Je suis désoler, j'ai pas réussi à trouver d'histoire sur "+informations.name+".<br>Soit il est trop vieux et mes aventures ne mi conduisent pas, ou soit il est trop récent pour moi "+emojiTired;
+                                    secondMsgBot(textBot2, timer);
+    
+                                }
+                            }else {
+                                textBot1 = "Voici l'adresse que tu ma demander gamins<br>"+informations.formatted_address+emojiGrinWink;
+                                firstMsgBot(textBot1, maps=true, coord=coordinate);
+                                textBot2 = "Mon petit voici l'histoire de "+informations.name+".<br>"+history.description+"<br>Si tu veut en savoir plus sur ce lieu, vas voir ici <a href=\""+history.link+"\" class='badge badge-info'>wikipedia</a>";
+                                secondMsgBot(textBot2, timer);
+                            }
+    
+                            scrollElem.scrollTop = scrollElem.scrollHeight;
+                        },
+                        error: function (error) {
+                            console.log(error);
                         }
-
-                        scrollElem.scrollTop = scrollElem.scrollHeight;
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
+                    });
+                }, 500);
+                
                 }
             
             scrollElem.scrollTop = scrollElem.scrollHeight;
