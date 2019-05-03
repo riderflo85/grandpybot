@@ -48,11 +48,18 @@
             </div><!-- end .row -->
             <div class="row">
                 <div class="col-12 mt-5">
-                    <!-- <div class="mx-auto">
-                        <h3 class="text-center" id="title-conv">Conversation</h3>
-                    </div> -->
                     <div class="card mx-auto" id="cardConversation">
-                        <h3 class="text-center sticky-top py-2" id="title-conv">Conversation</h3>
+                        <div class="container-fluid">
+                            <div class="row sticky-top" id="title-conv">
+                                <div class="col-md-2 pl-2 pt-1 d-none d-md-block">
+                                        <img src="{{ url_for('static', filename='img/papy_reflechis.png') }}" alt="papy ummmm" class="img-fluid">
+                                </div><!-- end .col-12 col-md-2 -->
+                                <div class="col-12 col-md-8">
+                                    <h3 class="text-center py-2">Conversation</h3>
+                                </div><!-- end .col-md-6 d-none d-md-block -->
+                            </div><!-- end .row -->
+                        </div><!-- end .container-fluid -->
+                       
                         <div class="card-body pl-1 pl-md-2 pr-1" id="cardBody">
                             <p class="table-primary text-primary border border-primary rounded-lg px-2 msg-user">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sapiente officia officiis nihil ullam quia voluptas. Dicta quod assumenda, ipsum, ad suscipit velit harum consectetur sequi quo perferendis minus cumque?</p>
                             <p class="table-warning text-secondary border border-warning rounded-lg px-2 msg-bot">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero natus est, explicabo ipsum suscipit maiores saepe minima provident veniam earum?</p>
@@ -60,7 +67,7 @@
                     </div><!-- end .card -->
 
                     <div class="form-group mx-auto my-3" id="div-champsDeSaisie">
-                        <input type="text" class="form-control" id="champsDeSaisie" placeholder="Écrivez...">
+                        <input type="text" class="form-control" id="champsDeSaisie" placeholder="Écrivez..." required>
                     </div><!-- end .form-group... -->
                 </div><!-- end .col-12 mt-5-->
             </div><!-- end .row-->
