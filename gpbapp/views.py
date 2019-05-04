@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # coding: utf-8
 
-import re, string, json
+import re, string, json, random
 import googlemaps
 import wikipediaapi
 from flask import Flask, render_template, request
@@ -42,7 +42,8 @@ def search():
     return json.dumps({
         'status': 'OK',
         'result': details,
-        'history': history
+        'history': history,
+        'story': random.choice(const.STORY)
         })
 
 

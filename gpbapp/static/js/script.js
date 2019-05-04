@@ -103,6 +103,7 @@ $(document).ready(function () {
                             var informations;
                             var check;
                             var history = reponseAjax.history;
+                            var story = reponseAjax.story;
                             /* end response Ajax */
 
                             /* checks the contents of the Ajax response to display the correct message to the user */
@@ -116,7 +117,7 @@ $(document).ready(function () {
                             }
                             if (history === "La page n'existe pas") {
                                 if (check) {
-                                    textBot1 = "Voici l'adresse que tu ma demander gamins<br>"+informations.formatted_address+"<br>"+emojiGrinWink;
+                                    textBot1 = "Voici l'adresse que tu ma demander mon poussin<br>"+informations.formatted_address+"<br>"+emojiGrinWink;
                                     firstMsgBot(textBot1, maps=true, coord=coordinate);
                                     textBot2 = "Je suis désoler, j'ai pas réussi à trouver d'histoire sur "+informations.name+".<br>Soit il est trop vieux et mes aventures ne mi conduisent pas, ou soit il est trop récent pour moi "+emojiTired;
                                     secondMsgBot(textBot2, timer);
@@ -127,9 +128,9 @@ $(document).ready(function () {
                                     secondMsgBot(textBot2, timer);
                                 }
                             }else {
-                                textBot1 = "Voici l'adresse que tu ma demander gamins<br>"+informations.formatted_address+". "+emojiGrinWink;
+                                textBot1 = "Voici l'adresse que tu ma demander mon poussin<br>"+informations.formatted_address+". "+emojiGrinWink;
                                 firstMsgBot(textBot1, maps=true, coord=coordinate);
-                                textBot2 = "Mon petit voici l'histoire de "+informations.name+".<br>"+history.description+"<br>Si tu veut en savoir plus sur ce lieu, vas voir ici <a href=\""+history.link+"\" class='badge badge-info'>wikipedia</a>";
+                                textBot2 = informations.name+".<br>"+history.description+"<br>"+"<span class='lead'>"+story+"</span>"+"<br>Si tu veut en savoir plus sur ce lieu, vas voir ici <a href=\""+history.link+"\" class='badge badge-info'>wikipedia</a>";
                                 secondMsgBot(textBot2, timer);
                             }
                             /* end check the contents of the Ajax response */
