@@ -12,6 +12,7 @@ flask = "*"
 googlemaps = "*"
 wikipedia-api = "*"
 pipfile = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
