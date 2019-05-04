@@ -34,6 +34,13 @@ def test_la_methode_util_word_de_la_classe_parser():
     test = Parser()
     assert test.util_word(list_word) == ['openclassrooms'] 
 
+def test_la_methode_address_de_la_classe_parser():
+    """
+    La methode address retourne une adresse sans le code postal, la ville et le pays
+    """
+    adresse_test = "7 Cité Paradis, 75010 Paris, France"
+    test = Parser()
+    assert test.address(adresse_test) == ' Cité Paradis'
 
 def test_de_la_methode_de_classe_place_search(monkeypatch):
     """

@@ -26,12 +26,18 @@ def search():
     phrase_parser = data.util_word(data_user)
     complete_string = " ".join(phrase_parser)
     prediction = geolocation.place_prediction(complete_string)
+
     if prediction == "Aucunne correspondance de trouver":
         details = "Lieu non trouver"
         history = "La page n'existe pas"
     else:
         details = geolocation.places_search(prediction['description'])
-        history = infos_wikipedia(complete_string)
+
+        if infos_wikipedia(complete_string) == "La page n'existe pas":
+            address_for_wiki = data.address(details['formatted_address'])
+            history = infos_wikipedia(address_for_wiki)
+        else:
+            history = infos_wikipedia(complete_string)
 
     return json.dumps({
         'status': 'OK',
@@ -70,7 +76,6 @@ class LocationSearch():
         return infos_util
 
 
-
 class Parser():
 
     def split_word(self, phrase_a_parser):
@@ -105,6 +110,14 @@ class Parser():
 
         return result
 
+    def address(self, full_address):
+        """
+        Méthode qui supprime le code postal, la ville et le pays d'une adresse
+        """
+        address_name = full_address[:full_address.index(',')]
+        r = re.compile(r'\d+')
+        return r.sub('', address_name)
+
 
 def infos_wikipedia(place):
     """
@@ -118,6 +131,9 @@ def infos_wikipedia(place):
 
         if "\n" in desc:
             desc = desc.replace("\n", " ")
+            result_infos = {"link": result_search.fullurl, "description": desc}
+            return result_infos
+        else:
             result_infos = {"link": result_search.fullurl, "description": desc}
             return result_infos
     
