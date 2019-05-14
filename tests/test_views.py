@@ -3,7 +3,9 @@
 import googlemaps
 import wikipediaapi
 
-from gpbapp.views import index, LocationSearch, Parser, infos_wikipedia
+from gpbapp.views import index
+from gpbapp.classes import LocationSearch, Parser
+from gpbapp.function import infos_wikipedia
 from gpbapp.constant import API_KEY
 
 # def test_la_fonction_index_de_views():
