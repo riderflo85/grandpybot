@@ -22,4 +22,4 @@ def infos_wikipedia(place):
             return result_infos
 
     else:
-        return "La page n'existe pas"
+        return None

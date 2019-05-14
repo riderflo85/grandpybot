@@ -27,13 +27,13 @@ def search():
     complete_string = " ".join(phrase_parser)
     prediction = geolocation.place_prediction(complete_string)
 
-    if prediction == "Aucunne correspondance de trouver":
+    if not prediction:
         details = "Lieu non trouver"
         history = "La page n'existe pas"
     else:
         details = geolocation.places_search(prediction['description'])
 
-        if infos_wikipedia(complete_string) == "La page n'existe pas":
+        if not infos_wikipedia(complete_string):
             address_for_wiki = data.address(details['formatted_address'])
             history = infos_wikipedia(address_for_wiki)
         else:

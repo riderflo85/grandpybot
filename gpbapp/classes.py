@@ -20,7 +20,7 @@ class LocationSearch():
                 "description" : result[0]['description']
             }
         else:
-            match = "Aucunne correspondance de trouver"
+            match = None
         return match
 
     def places_search(self, place):
