@@ -39,10 +39,10 @@ function firstMsgBot(text, maps=false, coord=null) {
 }
 
 function secondMsgBot(text, timerAnim) {
-    var imgBotMsg = "<img src='/static/img/img_msg.png' alt='papy message' class='img-fluid'>";
+    var imgBotMsg = "<img src='/static/img/img_msg.png' alt='papy message' class='img-fluid' id='papyMsg'>";
     var addBaliseBot = "<p class='d-none'>"+text+'</p>';
 
-    $('#cardBody img').remove();
+    $('#papyMsg').remove();
     $(imgBotMsg).appendTo('#cardBody');
     $(addBaliseBot).appendTo('#cardBody');
     initStyleMsg();
