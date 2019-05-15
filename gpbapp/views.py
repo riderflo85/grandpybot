@@ -35,7 +35,13 @@ def search():
 
         if not infos_wikipedia(complete_string):
             address_for_wiki = data.address(details['formatted_address'])
-            history = infos_wikipedia(address_for_wiki)
+
+            if not infos_wikipedia(address_for_wiki):
+                history = "La page n'existe pas"
+
+            else:
+                history = infos_wikipedia(address_for_wiki)
+
         else:
             history = infos_wikipedia(complete_string)
 
