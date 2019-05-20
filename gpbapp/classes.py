@@ -12,6 +12,10 @@ class LocationSearch():
         self.maps_service = googlemaps.Client(key=api)
     
     def place_prediction(self, place):
+        """
+        Method that returns location predictions based on a textual
+        search string
+        """
         result = self.maps_service.places_autocomplete_query(
             place
         )
@@ -24,6 +28,9 @@ class LocationSearch():
         return match
 
     def places_search(self, place):
+        """
+        Method that search a place
+        """
         result = self.maps_service.places(place)
         infos_util = {
             "formatted_address": result['results'][0]['formatted_address'],
@@ -40,8 +47,7 @@ class Parser():
 
     def split_word(self, phrase_a_parser):
         """
-        Méthode qui découpe une chaine de caractère en une liste de mots
-        et sans ponctuation
+        Method that cuts a string into a list of words without punctuation
         """
         result = re.split(r'(\W+)', phrase_a_parser.lower())
 
@@ -58,7 +64,7 @@ class Parser():
     
     def util_word(self, list_word):
         """
-        Méthode qui retire tout les mots inutile pour garder qu'une adresse
+        Method that removes all unnecessary words to keep an address
         """
         result = list_word
         for element in const.STOP_WORD:
@@ -72,7 +78,7 @@ class Parser():
 
     def address(self, full_address):
         """
-        Méthode qui supprime le code postal, la ville et le pays d'une adresse
+        Method that removes the postal code, city and country of an address
         """
         address_name = full_address[:full_address.index(',')]
         r = re.compile(r'\d+')

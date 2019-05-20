@@ -1,5 +1,6 @@
 
 function initMap(geolocation, div) {
+    // Initialize a map googleMaps
     var ville = geolocation;
     var miniMap = new google.maps.Map(
         document.getElementById(div),
@@ -11,6 +12,7 @@ function initMap(geolocation, div) {
 }
 
 function initStyleMsg() {
+    // Gives CSS style to messages
     var classBot = "table-warning text-secondary border border-warning rounded-lg px-2 msg-bot";
     var lastTextBot = $('#cardBody > p:last');
 
@@ -19,6 +21,7 @@ function initStyleMsg() {
 }
 
 function firstMsgBot(text, maps=false, coord=null) {
+    // Displays address and map googlemaps
     var addBaliseBot = "<p class='d-none'>"+text+'</p>';
 
     $(addBaliseBot).appendTo('#cardBody');
@@ -39,6 +42,7 @@ function firstMsgBot(text, maps=false, coord=null) {
 }
 
 function secondMsgBot(text, timerAnim) {
+    // Displays Wikipedia information about the place to search
     var imgBotMsg = "<img src='/static/img/img_msg.png' alt='papy message' class='img-fluid' id='papyMsg'>";
     var addBaliseBot = "<p class='d-none'>"+text+'</p>';
 
@@ -51,6 +55,7 @@ function secondMsgBot(text, timerAnim) {
 }
 
 function rotate() {
+    // Animation
     imgAnim.removeClass('d-none');
     imgAnim.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});  
     imgAnim.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});                      

@@ -22,9 +22,12 @@ def search():
     data = Parser()
     geolocation = LocationSearch(const.API_KEY)
 
+    # cuts the sentence into words
     data_user = data.split_word(phrase)
     phrase_parser = data.util_word(data_user)
     complete_string = " ".join(phrase_parser)
+
+    # Look for the place
     prediction = geolocation.place_prediction(complete_string)
 
     if not prediction:

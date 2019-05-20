@@ -8,20 +8,10 @@ from gpbapp.classes import LocationSearch, Parser
 from gpbapp.function import infos_wikipedia
 from gpbapp.constant import API_KEY
 
-# def test_la_fonction_index_de_views():
-#     """
-#     Premier test après avoir installer Flask
-#     Sert à vérifier que Flask est bien installer correctement
-#     """
-#     assert index() == "Hello world !"
-
-# def test_la_fonction_index_de_views():
-    
-#     assert index() == str
 
 def test_la_methode_split_word_de_la_classe_parser():
     """
-    La methode split_word retourne une liste de mots sans ponctuation
+    The split_word method returns a list of words without punctuation
     """
     phrase_a_parser = "Bonjour grandpy, peut tu me trouver l'adresse d'openclassrooms? merci mon pote, je t'aime bien l'ami"
     test = Parser()
@@ -30,7 +20,7 @@ def test_la_methode_split_word_de_la_classe_parser():
 
 def test_la_methode_util_word_de_la_classe_parser():
     """
-    La methode util_word retourne une liste de mots util pour les adresses
+    The util_word method returns a useful word list for addresses
     """
     list_word = ["bonjour", "grandpy", "peut", "tu", "me", "trouver", "l", "adresse", "d", "openclassrooms", "merci", "mon", "pote", "je", "t", "aime", "bien", "l", "ami"]
     test = Parser()
@@ -38,7 +28,7 @@ def test_la_methode_util_word_de_la_classe_parser():
 
 def test_la_methode_address_de_la_classe_parser():
     """
-    La methode address retourne une adresse sans le code postal, la ville et le pays
+    The address method returns an address without the postal code, city and country
     """
     adresse_test = "7 Cité Paradis, 75010 Paris, France"
     test = Parser()
@@ -46,8 +36,7 @@ def test_la_methode_address_de_la_classe_parser():
 
 def test_de_la_methode_de_classe_place_search(monkeypatch):
     """
-    La fonction place_search retourn un dictionnaire avec les informations
-    d'un lieu.
+    The place_search function returns a dictionary with the information of a place
     """
     result = {
         "formatted_address": "Rennes, France",
@@ -74,8 +63,8 @@ def test_de_la_methode_de_classe_place_search(monkeypatch):
 
 def test_de_la_methode_de_classe_place_prediction(monkeypatch):
     """
-    La fonction place_prediction, recherche une correspondance avec le
-    lieu chercher pour pouvoir déterminer et trouver son adresse
+    The place_prediction function, searches for a match with the search
+    location to be able to determine and find its address
     """
     result = {
         "description": "Openclassrooms, Cité Paradis, Paris, France"
@@ -94,8 +83,7 @@ def test_de_la_methode_de_classe_place_prediction(monkeypatch):
 
 def test_de_la_fonction_infos_wikipedia(monkeypatch):
     """
-    La fonction infos_wikipedia renvoi une courte description d'une
-    page wikipedia
+    The infos_wikipedia function returns a short description of a wikipedia page
     """
 
     class mockclass():

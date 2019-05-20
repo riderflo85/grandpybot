@@ -5,7 +5,7 @@ import wikipediaapi
 
 def infos_wikipedia(place):
     """
-    Fonction qui recherche et affiche la description d'une page wikipedia
+    Function that searches and displays the description of a wikipedia page
     """
     wiki_service = wikipediaapi.Wikipedia('fr')
     result_search = wiki_service.page(place)
