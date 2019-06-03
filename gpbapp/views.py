@@ -10,10 +10,12 @@ from gpbapp.function import infos_wikipedia
 
 app = Flask(__name__)
 
+
 @app.route('/')
 @app.route('/index/')
 def index():
-    return render_template('index.html', API_KEY = const.API_KEY)
+    return render_template('index.html', API_KEY=const.API_KEY)
+
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -54,6 +56,7 @@ def search():
         'history': history,
         'story': random.choice(const.STORY)
         })
+
 
 if __name__ == "__main__":
     app.run()

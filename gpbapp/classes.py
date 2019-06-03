@@ -6,11 +6,12 @@ import googlemaps
 
 from . import constant as const
 
+
 class LocationSearch():
 
     def __init__(self, api):
         self.maps_service = googlemaps.Client(key=api)
-    
+
     def place_prediction(self, place):
         """
         Method that returns location predictions based on a textual
@@ -21,7 +22,7 @@ class LocationSearch():
         )
         if result != []:
             match = {
-                "description" : result[0]['description']
+                "description": result[0]['description']
             }
         else:
             match = None
@@ -61,7 +62,7 @@ class Parser():
                 result.remove(word)
 
         return result
-    
+
     def util_word(self, list_word):
         """
         Method that removes all unnecessary words to keep an address

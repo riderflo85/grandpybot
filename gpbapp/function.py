@@ -3,6 +3,7 @@
 
 import wikipediaapi
 
+
 def infos_wikipedia(place):
     """
     Function that searches and displays the description of a wikipedia page
